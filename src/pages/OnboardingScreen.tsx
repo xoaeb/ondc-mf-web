@@ -9,7 +9,7 @@ const OnboardingScreen: React.FC = () => {
   useEffect(() => {
     // Welcome toast to enhance user experience
     toast({
-      title: "Welcome to PayGrow",
+      title: "Welcome to ONDC mutual-funds",
       description: "Your journey to financial growth starts here",
       variant: "default"
     });
