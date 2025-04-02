@@ -21,3 +21,8 @@ EXPOSE 5173
 
 # Start the application
 CMD ["npm", "run", "dev"]
+
+
+# docker build -t chandansutradhar/ondc_mutualfunds_web:0.0.1 .
+
+# docker run -d -p 5173:5173 --name ondc_mutualfunds_web chandansutradhar/ondc_mutualfunds_web:0.0.1
