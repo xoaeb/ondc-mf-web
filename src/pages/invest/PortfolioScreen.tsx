@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { ArrowLeft, Wallet, PieChart, TrendingUp, Clock, CalendarClock, ChevronRight, Landmark, DollarSign, AlertCircle } from 'lucide-react';
+import { ArrowLeft, Wallet, PieChart, TrendingUp, Clock, Eye, EyeOff,CalendarClock, ChevronRight, Landmark, DollarSign, AlertCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card } from '@/components/ui/card';
@@ -16,6 +16,8 @@ const portfolioSummary = {
   invested: 85000,
   returns: 4650.75,
   returnsPercent: 5.47,
+  oneDayReturns: 1000,
+  xirr: 20,
   allocation: [
     { type: 'Equity', percentage: 65 },
     { type: 'Debt', percentage: 20 },
@@ -72,6 +74,7 @@ const investments = [
 ];
 
 const PortfolioScreen: React.FC = () => {
+  const [showPortfolio, setShowPortfolio] = useState(true);
   const [loading, setLoading] = useState(true);
   
   useEffect(() => {
@@ -95,7 +98,7 @@ const PortfolioScreen: React.FC = () => {
         </div>
         
         {/* Portfolio Summary Card */}
-        <Card className="bg-white/10 backdrop-blur-sm border-none text-white p-4 rounded-xl shadow-lg">
+        {/* <Card className="bg-white/10 backdrop-blur-sm border-none text-white p-4 rounded-xl shadow-lg">
           <div className="flex items-center justify-between mb-4">
             <h3 className="font-semibold flex items-center">
               <Wallet className="h-5 w-5 mr-2 opacity-80" />
@@ -132,7 +135,60 @@ const PortfolioScreen: React.FC = () => {
               <p className="font-medium">₹7,500/month</p>
             </div>
           </div>
-        </Card>
+        </Card> */}
+        <Card className="bg-white/10 backdrop-blur-sm border-none text-white p-4 rounded-xl shadow-lg">
+  <div className="flex items-center justify-between mb-4">
+    <h3 className="font-semibold flex items-center">
+      <Wallet className="h-5 w-5 mr-2 opacity-80" />
+      Investment Value
+    </h3>
+    <Link to="/transaction-history">
+      <Button variant="ghost" className="h-8 px-3 py-1 text-white/80 hover:text-white hover:bg-white/10" size="sm">
+        View History
+      </Button>
+    </Link>
+  </div>
+
+  {/* Current Value */}
+  <div className="mb-4">
+    <p className="text-2xl font-bold">₹{portfolioSummary.totalValue.toLocaleString('en-IN')}</p>
+    <div className="flex items-center space-x-4 mt-1">
+      <div className="bg-white/20 rounded-full px-3 py-0.5 text-sm inline-flex items-center">
+        <TrendingUp className="w-3.5 h-3.5 mr-1" />
+        <span>+{portfolioSummary.returnsPercent.toFixed(2)}%</span>
+      </div>
+      <p className="text-sm text-white/80">
+        Returns: ₹{portfolioSummary.returns.toLocaleString('en-IN')}
+      </p>
+    </div>
+  </div>
+
+  {/* Investment Summary */}
+  <div className="grid grid-cols-2 gap-4 text-sm">
+    <div>
+      <p className="text-white/80">Invested</p>
+      <p className="font-medium">₹{portfolioSummary.invested.toLocaleString('en-IN')}</p>
+    </div>
+    <div className="text-right">
+      <p className="text-white/80">SIPs</p>
+      <p className="font-medium">₹7,500/month</p>
+    </div>
+    <div>
+      <p className="text-white/80">XIRR</p>
+      <p className="font-medium">{portfolioSummary.xirr.toFixed(2)}%</p>
+    </div>
+    {/* <div>
+      <p className="text-white/80">Total Returns</p>
+      <p className="font-medium">₹{portfolioSummary.returns.toLocaleString('en-IN')}</p>
+    </div> */}
+    <div className="text-right">
+      <p className="text-white/80">1D Returns</p>
+      <p className="font-medium">₹{portfolioSummary.oneDayReturns.toLocaleString('en-IN')}</p>
+    </div>
+  
+  </div>
+</Card>
+
       </div>
       
       {/* Asset Allocation */}

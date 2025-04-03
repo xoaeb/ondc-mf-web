@@ -73,7 +73,7 @@ const FeaturedFundsSection: React.FC = () => {
       <div className="space-y-3">
         {featuredFunds.map((fund) => (
           <Link to={`/invest/mutual-fund/${fund.id}`} key={fund.id}>
-            <Card className="p-4 border border-gray-200">
+            <Card className="p-4 border border-gray-200 mb-4">
               <div className="flex items-start justify-between mb-1">
                 <div>
                   <h4 className="font-medium text-paygrow-blue">{fund.name}</h4>
@@ -120,6 +120,7 @@ const FeaturedFundsSection: React.FC = () => {
           </Link>
         ))}
       </div>
+      
     </div>
   );
 };

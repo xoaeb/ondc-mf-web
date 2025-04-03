@@ -148,8 +148,7 @@ const InvestScreen = () => {
             </div>
           </motion.div>
           
-          {/* Enhanced Search input */}
-          <motion.div 
+          {/* <motion.div 
             className="relative mt-4"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -160,12 +159,11 @@ const InvestScreen = () => {
               placeholder="Search mutual funds, stocks..."
               className="bg-white/10 border-white/20 text-white placeholder:text-white/60 pl-10 backdrop-blur-md shadow-sm hover:bg-white/20 transition-colors rounded-xl h-11"
             />
-          </motion.div>
+          </motion.div> */}
         </div>
 
-        {/* Portfolio teaser (visible within hero) */}
         <motion.div
-          className="mt-6 bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 relative z-10"
+          className="mt-4 bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 relative z-10"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.6 }}
@@ -185,18 +183,19 @@ const InvestScreen = () => {
                 <span className="text-xs text-white/70 ml-2">+₹2,580</span>
               </div>
             </div>
-            <div className="w-20 h-20">
+            {/* <div className="w-20 h-20">
               <svg viewBox="0 0 100 100" className="w-full h-full">
                 <circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.2)" strokeWidth="10" />
                 <circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.8)" strokeWidth="10" strokeDasharray="251.2" strokeDashoffset="62.8" />
               </svg>
-            </div>
+            </div> */}
           </div>
         </motion.div>
 
         {/* Quick access buttons */}
-        <div className="absolute bottom-0 left-0 right-0 transform translate-y-1/2 px-4 z-20">
-          <Card className="grid grid-cols-4 gap-1 p-1 shadow-md border-0 rounded-xl overflow-hidden">
+      </div>
+        <div className="mt-2 px-4">
+          <Card className="grid grid-cols-4 gap-1 p-1 shadow-sm border-0 rounded-xl overflow-hidden">
             {quickAccessItems.map((item, index) => (
               <Link to={item.route} key={index} className="text-center p-3 rounded-lg hover:bg-gray-100 transition-colors">
                 <div className="flex flex-col items-center">
@@ -209,10 +208,9 @@ const InvestScreen = () => {
             ))}
           </Card>
         </div>
-      </div>
       
       {/* Main Content */}
-      <div className="mt-20 px-4">
+      <div className="mt-0 px-4">
         <div className="flex justify-between mb-6">
           <div 
             className={`flex-1 text-center py-3 font-medium ${activeTab === 'explore' ? 'text-paygrow-blue border-b-2 border-paygrow-blue' : 'text-gray-500'}`}
@@ -230,8 +228,7 @@ const InvestScreen = () => {
         
         {activeTab === 'explore' ? (
           <div className="space-y-6">
-            {/* Featured Banner */}
-            <Link to="/invest/mutual-funds?category=featured">
+            {/* <Link to="/invest/mutual-funds?category=featured">
               <motion.div 
                 className="glass-card bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-2xl p-5 overflow-hidden relative"
                 whileHover={{ scale: 1.02 }}
@@ -249,18 +246,14 @@ const InvestScreen = () => {
                   <TrendingUp className="h-32 w-32 -rotate-12 translate-x-6 translate-y-6" />
                 </div>
               </motion.div>
-            </Link>
+            </Link> */}
             
-            {/* Market Indicators */}
             <MarketIndicators indices={marketIndices} />
             
-            {/* Fund Categories */}
             <FundCategoryScroller />
             
-            {/* Featured Funds */}
             <FeaturedFundsSection />
             
-            {/* Explore more section */}
             <div className="grid grid-cols-2 gap-3 mb-6">
               <Link to="/invest/featured">
                 <motion.div

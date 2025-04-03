@@ -59,6 +59,7 @@ const categories = [
 
 const FundCategoryScroller: React.FC = () => {
   return (
+    
     <div className="mb-6">
       <div className="flex justify-between items-center mb-3">
         <h3 className="text-lg font-semibold">Fund Categories</h3>
@@ -66,8 +67,36 @@ const FundCategoryScroller: React.FC = () => {
           View All <ArrowRight className="h-4 w-4 ml-1" />
         </Link>
       </div>
+
+        {/* Updated Grid Layout */}
+  <div className="grid grid-cols-3 gap-4 sm:gap-6">
+    {categories.map((category, index) => (
+      <motion.div 
+        key={index}
+        whileHover={{ y: -5 }}
+        whileTap={{ scale: 0.97 }}
+        transition={{ duration: 0.2 }}
+      >
+        <Link to={category.route}>
+          <Card className={`p-3 border ${category.borderColor} hover:border-paygrow-blue hover:shadow-md transition-all relative overflow-hidden`}>
+            {/* Add subtle gradient background */}
+            <div className="absolute inset-0 bg-gradient-to-br from-white to-gray-50 opacity-80"></div>
+
+            <div className="relative flex flex-col items-center text-center">
+              <div className={`${category.bgColor} rounded-full p-2 w-12 h-12 flex items-center justify-center mb-2`}>
+                {category.icon}
+              </div>
+              <h4 className="font-medium text-sm">{category.name}</h4>
+              {/* <p className="text-xs text-gray-500">{category.description}</p> */}
+            </div>
+          </Card>
+        </Link>
+      </motion.div>
+    ))}
+  </div>
+
       
-      <div className="overflow-x-auto pb-2 -mx-4 px-4">
+      {/* <div className="overflow-x-auto pb-2 -mx-4 px-4">
         <div className="flex space-x-3">
           {categories.map((category, index) => (
             <motion.div 
@@ -78,7 +107,6 @@ const FundCategoryScroller: React.FC = () => {
             >
               <Link to={category.route}>
                 <Card className={`w-32 p-3 border ${category.borderColor} hover:border-paygrow-blue hover:shadow-md transition-all relative overflow-hidden`}>
-                  {/* Add subtle gradient background */}
                   <div className="absolute inset-0 bg-gradient-to-br from-white to-gray-50 opacity-80"></div>
                   
                   <div className="relative">
@@ -93,7 +121,7 @@ const FundCategoryScroller: React.FC = () => {
             </motion.div>
           ))}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
